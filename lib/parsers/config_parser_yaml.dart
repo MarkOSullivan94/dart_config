@@ -6,13 +6,13 @@ import 'package:yaml/yaml.dart' as YAML;
 import '../config.dart';
 
 class YamlConfigParser implements ConfigParser {
-  
-  Future<Map> parse(String configText) {
-    var completer = new Completer<Map>();
-    
+  Future<Map<String, Object>> parse(String configText) {
+    var completer = new Completer<YAML.YamlMap>();
+
     var map = YAML.loadYaml(configText);
     completer.complete(map);
-    
-    return completer.future;
+
+    return completer.future
+        .then((val) => val.map((k, v) => MapEntry(k.toString(), v)));
   }
 }

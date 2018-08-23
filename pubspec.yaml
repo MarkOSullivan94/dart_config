@@ -6,7 +6,5 @@ homepage: https://github.com/chrisbu/dart_config
 dependencies:
   yaml: '>=0.4.2'
 dev_dependencies:
-  unittest: any
-  browser: any
 environment:
   sdk: '>=1.19.0 <2.1.0'
