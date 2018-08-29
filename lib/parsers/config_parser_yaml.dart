@@ -13,6 +13,6 @@ class YamlConfigParser implements ConfigParser {
     completer.complete(map);
 
     return completer.future
-        .then((val) => val.map((k, v) => MapEntry(k.toString(), v)));
+        .then((val) => val.map((k, v) => new MapEntry(k.toString(), v)));
   }
 }
