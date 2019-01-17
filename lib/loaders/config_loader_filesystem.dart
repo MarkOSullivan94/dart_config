@@ -2,6 +2,7 @@ library config_loader_httprequest;
 
 import 'dart:io';
 import 'dart:async';
+import 'dart:convert';
 import '../config.dart';
 
 class ConfigFilesystemLoader extends ConfigLoader {
@@ -19,7 +20,7 @@ class ConfigFilesystemLoader extends ConfigLoader {
         file.open(mode: FileMode.READ).then((RandomAccessFile f) {
           f.length().then((length) {
             f.read(length).then((List<int> buffer) {
-              var configText = new String.fromCharCodes(buffer);
+              var configText = utf8.decode(buffer);
               completer.complete(configText);
             }, onError: errorHandler);
           }, onError: errorHandler);
